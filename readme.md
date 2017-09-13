@@ -1,4 +1,4 @@
-## Write GC Friendly Java Code
+## Write the GC Friendly Java Code
 Tips & Guide for Reducing Java Garbage Collection Overhead
 
 ### Main Idea
@@ -35,7 +35,7 @@ for(int i=0;i < goldMembers.size();i++) {
 }
 ```
 
-For example code related to this tips, please browse to this [Link](https://github.com/mkdika/optimizedjava/blob/master/optimizedjava/src/com/mkdika/optimizedjava/loops/TestLoop1.java)
+For example code related to above tips, please browse to this [Link](https://github.com/mkdika/optimizedjava/blob/master/optimizedjava/src/com/mkdika/optimizedjava/loops/TestLoop1.java)
 
 
 ### Predict Collection Capacities
@@ -43,25 +43,54 @@ The idea is to avoid or optimized collection size re-allocation process by provi
 
 ```java
 List<Member> members = ...
-List<String> oldMembers = new ArrayList<>();
+List<String> midMembers = new ArrayList<>();
 for (int i=0; i < members.size(); i++) {
 	if (members.get(i).getTransaction() > 1000) {
-		oldMembers.add(members.get(i));
+		midMembers.add(members.get(i));
 	}
 }
 ```
 
-Instead of above code, we can initialize the size of `ArrayList` for object `oldMembers` as below:
+Instead of above code, we can initialize the size of `ArrayList` for object `midMembers` as below:
 
 ```java
 List<Member> members = ...
-List<String> oldMembers = new ArrayList<>(members.size());
+List<String> midMembers = new ArrayList<>(members.size());
 for (int i=0; i < members.size(); i++) {
 	if (members.get(i).getTransaction() > 1000) {
-		oldMembers.add(members.get(i));
+		midMembers.add(members.get(i));
 	}
 }
 ```
+For example code related to above tips, please browse to this [Link](https://github.com/mkdika/optimizedjava/blob/master/optimizedjava/src/com/mkdika/optimizedjava/loops/TestLoop1.java)
+
+
+### Use Final for Immutable Instance Variable  
+Unless for constants purpose, for any immutable instance variable, it is adviced to use `final` modifier. The value of variable can be 
+assign upon construction.
+
+```java
+public class ObjectPair {
+	private final Object first;
+	private final Object second;
+ 
+	public ObjectPair(Object first, Object second) {
+		this.first = first;
+		this.second = second;
+	}
+ 
+	public Object getFirst() {
+		return first;
+	}
+ 
+	public Object getSecond() {
+		return second;
+	}
+}
+```
+
+
+
 
 
 
