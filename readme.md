@@ -92,7 +92,7 @@ public class ObjectPair {
 ```
 
 ### String Concatenation
-Because `String` is immutable, which means they do not get modified when literally concatenation using the `+` operator takes place.
+Because `String` are immutable, which means they do not get modified when literally concatenation using the `+` operator takes place.
 Use `StringBuilder` and its `append` method to concatenate the chunks of `String`. Instead use this:
 
 ```java
@@ -121,6 +121,19 @@ public static String toString(T[] array) {
 	} 
 	sb.append("]");
 	return sb.toString();
+}
+```
+
+### Local Variable Nulling
+Local variable nulling is not necessary. The Just In Time (JIT) can do liveness analysis. below are unnecessary manual object nulling.
+
+```java
+void foo() {
+	int[] array = new int[1024];
+	populate(array);
+	print(array); // last use of array in method foo()
+	array = null; // this line is unnecessary.
+	              // array is no longer considered live by the GC  
 }
 ```
 
