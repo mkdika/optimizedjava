@@ -69,7 +69,7 @@ For example code related to above tips, please browse to this [Link](https://git
 
 ### Use Final for Immutable Instance Variable  
 For any instance variable that have immutable purpose, it is adviced to use `final` modifier. The value of variable can be 
-assign upon construction.
+assign upon construction, not to directly assign.
 
 ```java
 public class ObjectPair {
@@ -91,7 +91,38 @@ public class ObjectPair {
 }
 ```
 
+### String Concatenation
+Because `String` is immutable, which means they do not get modified when literally concatenation using the `+` operator takes place.
+Use `StringBuilder` and its `append` method to concatenate the chunks of `String`. Instead use this:
 
+```java
+public static String toString(T[] array) {
+	String result = "[";
+ 	for (int i = 0; i < array.length; i++) {
+		result += (array[i] == array ? "this" : array[i]);
+		if (i < array.length - 1) {
+			result += ", ";
+		}
+	} 
+	result += "]"; 
+	return result;
+}
+```
+We can use this:
+
+```java
+public static String toString(T[] array) {
+	StringBuilder sb = new StringBuilder("[");
+ 	for (int i = 0; i < array.length; i++) {
+		sb.append(array[i] == array ? "this" : array[i]);
+		if (i < array.length - 1) {
+			sb.append(", ");
+		}
+	} 
+	sb.append("]");
+	return sb.toString();
+}
+```
 
 
 
