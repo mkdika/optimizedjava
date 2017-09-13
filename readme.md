@@ -1,5 +1,7 @@
 ## Write the GC Friendly Java Code
-Tips & Guide for Reducing Java Garbage Collection Overhead
+Tips & Guide for Reducing Java Garbage Collection Overhead.
+
+![Imgur](https://i.imgur.com/GO3A9yQ.png)
 
 ### Main Idea
 coming soon...
@@ -66,7 +68,7 @@ For example code related to above tips, please browse to this [Link](https://git
 
 
 ### Use Final for Immutable Instance Variable  
-Unless for constants purpose, for any immutable instance variable, it is adviced to use `final` modifier. The value of variable can be 
+For any instance variable that have immutable purpose, it is adviced to use `final` modifier. The value of variable can be 
 assign upon construction.
 
 ```java
