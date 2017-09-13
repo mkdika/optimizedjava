@@ -14,15 +14,27 @@ public class TestLoop1 {
         List<Member> goldMembers = createDummyData(1000);
 
         Benefit benefit = new Benefit(25d);
+        
+         /*
+            approach-1, using for-each-loop
+        */
 //        for (Member m : goldMembers) {
 //            m.setBenefit(benefit);
 //        }      
 
-//        goldMembers.forEach(m -> m.setBenefit(benefit));
+        /*
+            approach-2, using Java8 Stream API
+        */
+        goldMembers.forEach(m -> m.setBenefit(benefit));
+        goldMembers.forEach(System.out::println);
+        
 
-        for (int i=0;i<goldMembers.size();i++) {
-            goldMembers.get(i).setBenefit(benefit);
-        }
+         /*
+            approach-3, using index-loop
+         */
+//        for (int i=0;i<goldMembers.size();i++) {
+//            goldMembers.get(i).setBenefit(benefit);
+//        }        
     }
 
     private static List<Member> createDummyData(int n) {
@@ -40,7 +52,6 @@ public class TestLoop1 {
 }
 
 class Member {
-
     private String name;
     private Benefit benefit;
 
@@ -63,10 +74,14 @@ class Member {
     public void setBenefit(Benefit benefit) {
         this.benefit = benefit;
     }
+
+    @Override
+    public String toString() {
+        return name+":"+benefit.getDiscount();
+    }        
 }
 
 class Benefit {
-
     private double discount;
 
     public Benefit(double discount) {
