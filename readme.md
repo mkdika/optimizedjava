@@ -1,7 +1,8 @@
-## GC Friendly Java Code
+## Write GC Friendly Java Code
 Tips & Guide for Reducing Java Garbage Collection Overhead
 
 ### Main Idea
+coming soon...
 
 
 ### Requirement
@@ -18,7 +19,7 @@ for (Member m : goldMembers) {
 }
 ```
 
-Because during the code generation `for-each-loop` is replace with standard `iterator-loop`. Instead of that we can use `lambda for-each` or `index-loop`. Below is the solution using `lambda for-each`:
+Because during the code generation `for-each-loop` is replace with standard `iterator-loop`, and `iterator()` is likely to produce a new iterator on each call. Instead of that we can use `lambda for-each` or `index-loop`. Below is the solution using `lambda for-each`:
 
 ```java
 Benefit benefit = ...
@@ -34,7 +35,33 @@ for(int i=0;i < goldMembers.size();i++) {
 }
 ```
 
-For example code for this tips, please browse to this [Link](https://github.com/mkdika/optimizedjava/blob/master/optimizedjava/src/com/mkdika/optimizedjava/loops/TestLoop1.java)
+For example code related to this tips, please browse to this [Link](https://github.com/mkdika/optimizedjava/blob/master/optimizedjava/src/com/mkdika/optimizedjava/loops/TestLoop1.java)
+
+
+### Predict Collection Capacities
+The idea is to avoid or optimized collection size re-allocation process by providing its expected size upon construction.
+
+```java
+List<Member> members = ...
+List<String> oldMembers = new ArrayList<>();
+for (int i=0; i < members.size(); i++) {
+	if (members.get(i).getTransaction() > 1000) {
+		oldMembers.add(members.get(i));
+	}
+}
+```
+
+Instead of above code, we can initialize the size of `ArrayList` for object `oldMembers` as below:
+
+```java
+List<Member> members = ...
+List<String> oldMembers = new ArrayList<>(members.size());
+for (int i=0; i < members.size(); i++) {
+	if (members.get(i).getTransaction() > 1000) {
+		oldMembers.add(members.get(i));
+	}
+}
+```
 
 
 
