@@ -1,14 +1,15 @@
 ## Write the GC Friendly Java Code
-Tips & Guide for Reducing Java Garbage Collection Overhead.
+Programming Tips & Guide to Reducing Java Garbage Collection Overhead.
 
 ![Imgur](https://i.imgur.com/GO3A9yQ.png)
 
-### Main Idea
+### Introduction
 coming soon...
 
 
 ### Requirement
-- All the example is base on Java 8 code, so you need to have pre-installed `JDK 8 `.
+- All the example is base on Java 8, so you need to have pre-installed `JDK 8 `.
+- Some tips may use specific Java 8 features, approach & solution.
 
 
 ### Loops
@@ -37,9 +38,6 @@ for(int i=0;i < goldMembers.size();i++) {
 }
 ```
 
-For example code related to above tips, please browse to this [Link](https://github.com/mkdika/optimizedjava/blob/master/optimizedjava/src/com/mkdika/optimizedjava/loops/TestLoop1.java)
-
-
 ### Predict Collection Capacities
 The idea is to avoid or optimized collection size re-allocation process by providing its expected size upon construction.
 
@@ -64,12 +62,10 @@ for (int i=0; i < members.size(); i++) {
 	}
 }
 ```
-For example code related to above tips, please browse to this [Link](https://github.com/mkdika/optimizedjava/blob/master/optimizedjava/src/com/mkdika/optimizedjava/loops/TestLoop1.java)
-
 
 ### Use Final for Immutable Instance Variable  
 For any instance variable that have immutable purpose, it is adviced to use `final` modifier. The value of variable can be 
-assign upon construction, not to directly assign.
+assign upon construction, avoid directly assign.
 
 ```java
 public class ObjectPair {
@@ -108,7 +104,7 @@ public static String toString(T[] array) {
 	return result;
 }
 ```
-We can use this:
+Rather, we can use this:
 
 ```java
 public static String toString(T[] array) {
@@ -125,7 +121,8 @@ public static String toString(T[] array) {
 ```
 
 ### Local Variable Nulling
-Local variable nulling is not necessary. The Just In Time (JIT) can do liveness analysis. below are unnecessary manual object nulling.
+Local variable nulling is not necessary. The Just In Time (JIT) can do liveness analysis. below are example 
+for unnecessary manual object nulling.
 
 ```java
 void foo() {
@@ -136,6 +133,12 @@ void foo() {
 	              // array is no longer considered live by the GC  
 }
 ```
+
+### Avoid Explicit GC Execution
+- Avoid to execute `System.gc()` manually, it may process at the wrong time and may hurts performance with no benefit.
+- We can use parameter `-XX:+DisableExplicitGC` to ignore `System.gc()`
+- **Beware** of libraries that call `System.gc()`.
+
 
 
 
