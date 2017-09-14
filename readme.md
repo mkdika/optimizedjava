@@ -1,5 +1,5 @@
 ## Write the GC Friendly Java Code
-Programming Tips & Guide to Reducing Java Garbage Collection Overhead.
+Java Programming Tips & Guide to Reducing Garbage Collection Overhead.
 
 ![Imgur](https://i.imgur.com/GO3A9yQ.png)
 
@@ -62,6 +62,9 @@ for (int i=0; i < members.size(); i++) {
 	}
 }
 ```
+
+Avoid frequent re-sizing of collection size.
+
 
 ### Use Final for Immutable Instance Variable  
 For any instance variable that have immutable purpose, it is adviced to use `final` modifier. The value of variable can be 
@@ -136,9 +139,12 @@ void foo() {
 
 ### Avoid Explicit GC Execution
 - Avoid to execute `System.gc()` manually, it may process at the wrong time and may hurts performance with no benefit.
-- We can use parameter `-XX:+DisableExplicitGC` to ignore `System.gc()`
+- We can use parameter `-XX:+DisableExplicitGC` to ignore the execution of `System.gc()`
 - **Beware** of libraries that call `System.gc()`.
 
+
+### Object Pooling
+- Generation GCs love short-lived and immutable objects. Not long-lived, highly mutable objects.
 
 
 
