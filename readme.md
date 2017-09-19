@@ -9,7 +9,10 @@ coming soon...
 
 ### Requirement
 - All the example is base on Java 8, so you need to have pre-installed `JDK 8 `.
+
 - Some tips may use specific Java 8 features, approach & solution.
+
+  ​
 
 
 ### Loops
@@ -39,7 +42,9 @@ for(int i=0;i < goldMembers.size();i++) {
 ```
 
 
+
 ### Loop Invariant Hoisting
+
 Below is the common Java `for-loop` that came from `c/c++` tradition.
 
 ```java
@@ -57,7 +62,9 @@ for (int i=0, len=array.length; i < len; ++i) {
 ```
 
 
+
 ### Loop Invariant Hoisting
+
 Below is the common Java `for-loop` that came from `c/c++` tradition.
 
 ```java
@@ -73,9 +80,11 @@ for (int i=0, len=array.length; i < len; ++i) {
 	array[i]; .....
 }
 ```
+
 
 
 ### Predict Collection Capacities
+
 The idea is to avoid or optimized collection size re-allocation process by providing its expected size upon construction.
 
 ```java
@@ -103,7 +112,9 @@ for (int i=0; i < members.size(); i++) {
 Avoid frequent re-sizing of collection size.
 
 
+
 ### Use Final for Immutable Instance Variable  
+
 For any instance variable that have immutable purpose, it is adviced to use `final` modifier. The value of variable can be 
 assign upon construction, avoid directly assign.
 
@@ -127,7 +138,10 @@ public class ObjectPair {
 }
 ```
 
+
+
 ### String Concatenation
+
 Because `String` are immutable, which means they do not get modified when literally concatenation using the `+` operator takes place.
 Use `StringBuilder` and its `append` method to concatenate the chunks of `String`. Instead use this:
 
@@ -160,7 +174,10 @@ public static String toString(T[] array) {
 }
 ```
 
+
+
 ### Local Variable Nulling
+
 Local variable nulling is not necessary. The Just In Time (JIT) can do liveness analysis. below are example 
 for unnecessary manual object nulling.
 
@@ -176,28 +193,35 @@ void foo() {
 
 
 
-
-
 ### Inner Classes
 Inner class have an `implicit reference` to the outher instance which is can be potentially increase object retention and graph complexity.
 coming soon...
 
 
+
 ### Small Methods
+
 coming soon...
+
 
 
 ### Local Variables
+
 coming soon...
 
 
+
 ### Avoid Explicit GC Execution
+
 - Avoid to execute `System.gc()` manually, it may process at the wrong time and may hurts performance with no benefit.
 - We can use parameter `-XX:+DisableExplicitGC` to ignore the execution of `System.gc()`
 - **Beware** of libraries that call `System.gc()`.
 
 
+
+
 ### Object Pooling
+
 - Generation GCs love short-lived and immutable objects. Not long-lived, highly mutable objects.
 
 
