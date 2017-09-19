@@ -38,6 +38,43 @@ for(int i=0;i < goldMembers.size();i++) {
 }
 ```
 
+
+### Loop Invariant Hoisting
+Below is the common Java `for-loop` that came from `c/c++` tradition.
+
+```java
+for (int i=0; i < array.length; i++) {
+	array[i]; .....
+}
+```
+
+Because the `array.length` is a variable that does'nt change all the iteration time, we can put it on local variable section.
+
+```java
+for (int i=0, len=array.length; i < len; ++i) {
+	array[i]; .....
+}
+```
+
+
+### Loop Invariant Hoisting
+Below is the common Java `for-loop` that came from `c/c++` tradition.
+
+```java
+for (int i=0; i < array.length; i++) {
+	array[i]; .....
+}
+```
+
+Because the `array.length` is a variable that does'nt change all the iteration time, we can put it on local variable section.
+
+```java
+for (int i=0, len=array.length; i < len; ++i) {
+	array[i]; .....
+}
+```
+
+
 ### Predict Collection Capacities
 The idea is to avoid or optimized collection size re-allocation process by providing its expected size upon construction.
 
@@ -138,22 +175,7 @@ void foo() {
 ```
 
 
-### Loop Invariant Hoisting
-Below is the common Java `for-loop` that came from `c/c++` tradition.
 
-```java
-for (int i=0; i < array.length; i++) {
-	array[i]; .....
-}
-```
-
-Because the `array length` is variable that does'nt change all the iteration time, we put it on local variable section.
-
-```java
-for (int i=0, len=array.length; i < len; ++i) {
-	array[i]; .....
-}
-```
 
 
 ### Inner Classes
