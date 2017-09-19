@@ -1,5 +1,5 @@
 ## Write the GC Friendly Java Code
-Java Programming Tips & Guide to Reducing Garbage Collection Overhead.
+Java Programming Tips to Reducing the runtime and Garbage Collection Overhead.
 
 ![Imgur](https://i.imgur.com/GO3A9yQ.png)
 
@@ -136,6 +136,38 @@ void foo() {
 	              // array is no longer considered live by the GC  
 }
 ```
+
+
+### Loop Invariant Hoisting
+Below is the common Java `for-loop` that came from `c/c++` tradition.
+
+```java
+for (int i=0; i < array.length; i++) {
+	array[i]; .....
+}
+```
+
+Because the `array length` is variable that does'nt change all the iteration time, we put it on local variable section.
+
+```java
+for (int i=0, len=array.length; i < len; ++i) {
+	array[i]; .....
+}
+```
+
+
+### Inner Classes
+Inner class have an `implicit reference` to the outher instance which is can be potentially increase object retention and graph complexity.
+coming soon...
+
+
+### Small Methods
+coming soon...
+
+
+### Local Variables
+coming soon...
+
 
 ### Avoid Explicit GC Execution
 - Avoid to execute `System.gc()` manually, it may process at the wrong time and may hurts performance with no benefit.
