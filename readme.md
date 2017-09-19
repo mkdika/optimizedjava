@@ -4,10 +4,12 @@ Java Programming Tips to Reducing the runtime and Garbage Collection Overhead.
 ![Imgur](https://i.imgur.com/GO3A9yQ.png)
 
 ### Introduction
-coming soon...
+coming soon...xxx
+
 
 
 ### Requirement
+
 - All the example is base on Java 8, so you need to have pre-installed `JDK 8 `.
 
 - Some tips may use specific Java 8 features, approach & solution.
