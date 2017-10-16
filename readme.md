@@ -11,10 +11,9 @@ coming soon...xxx
 ### Requirement
 
 - All the example is base on Java 8, so you need to have pre-installed `JDK 8 `.
-
 - Some tips may use specific Java 8 features, approach & solution.
 
-  ​
+
 
 
 ### Loops
@@ -197,19 +196,28 @@ void foo() {
 
 ### Inner Classes
 Inner class have an `implicit reference` to the outher instance which is can be potentially increase object retention and graph complexity.
-coming soon...
+_coming soon..._
+
+
+
+### Logical Operator Short-Circuiting
+Take advantages from using Java Logical Operator Short-Circuiting. Using `&` and `|` are different from `&&` and `||`.  While `&` and `|` always evaluate both sides, `&&` and `||` are operators __short-circuit__, meaning they don't evaluate the right hand side if it isn't necessary.
 
 
 
 ### Small Methods
-
-coming soon...
+_coming soon..._
 
 
 
 ### Local Variables
+_coming soon..._
 
-coming soon...
+
+
+### Branch Prediction
+[Branch Prediction](https://dzone.com/articles/java-on-steroids-5-super-useful-jit-optimization-t)
+_coming soon..._
 
 
 
@@ -232,4 +240,4 @@ coming soon...
 ### Reference
 - [Writing GC Friendly Code](https://github.com/AlmasB/FXGL/wiki/Writing-GC-friendly-Code)
 - [VOID OBJ11-J. Write garbage-collection-friendly code](https://www.securecoding.cert.org/confluence/display/java/VOID+OBJ11-J.+Write+garbage-collection-friendly+code)
-- [5 Tips for Reducing Your Java Garbage Collection Overhead](http://blog.takipi.com/5-tips-for-reducing-your-java-garbage-collection-overhead/)
+- [5 Tips for Reducing Your Java Garbage Collection Overhead](http://blog.takipi.com/5-tips-for-reducing-your-java-garbage-collection-overhead/)s
